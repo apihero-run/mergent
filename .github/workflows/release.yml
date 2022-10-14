@@ -1,0 +1,37 @@
+name: 🚀 Release new NPM package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+      - name: 👮‍♀️ Validate and extract release information
+        id: release
+        uses: manovotny/github-releases-for-automated-package-publishing-action@v1.0.0
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: 18
+          registry-url: "https://registry.npmjs.org"
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+      - name: 🚀 Publish tagged package
+        if: steps.release.outputs.tag != ''
+        run: npm publish --tag ${{ steps.release.outputs.tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 🚀 Publish version
+        if: steps.release.outputs.tag == ''
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

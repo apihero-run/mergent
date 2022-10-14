@@ -1,0 +1,50 @@
+{
+  "name": "@apihero/integration-template",
+  "version": "1.0.0",
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "main": "./lib/index.js",
+  "type": "commonjs",
+  "module": "./lib/index.mjs",
+  "files": [
+    "/lib"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "API Hero",
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "apihero",
+    "client",
+    "http"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apihero-run/integration-template"
+  },
+  "homepage": "https://docs.apihero.run/integrations",
+  "bugs": {
+    "url": "https://github.com/apihero-run/integration-template"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.78.1",
+    "rollup-plugin-typescript2": "^0.33.0",
+    "typescript": "^4.8.2"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "check-types": "tsc --noEmit",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run clean && npm run check-types && npm run build"
+  },
+  "dependencies": {
+    "@apihero/core": "^1.0.0"
+  }
+}
