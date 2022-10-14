@@ -1,5 +1,5 @@
 {
-  "name": "@apihero/integration-template",
+  "name": "@apihero/mergent",
   "version": "1.0.0",
   "exports": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -18,7 +18,8 @@
     "api",
     "apihero",
     "client",
-    "http"
+    "http",
+    "mergent"
   ],
   "publishConfig": {
     "access": "public"
@@ -45,6 +46,6 @@
     "prepublishOnly": "npm run clean && npm run check-types && npm run build"
   },
   "dependencies": {
-    "@apihero/core": "^1.0.0"
+    "@apihero/core": "latest"
   }
 }

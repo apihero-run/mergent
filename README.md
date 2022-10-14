@@ -1,1 +1,1 @@
-# APIHero Integration Template
+# API Hero integration for Mergent.co
