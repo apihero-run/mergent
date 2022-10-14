@@ -1,3 +1,3 @@
-export function hello(): string {
-  return "Hello world!";
-}
+export {};
+
+export * from "./@types";
