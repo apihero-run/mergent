@@ -1,4 +1,4 @@
-# API Hero integration for Mergent.co\
+# API Hero integration for Mergent.co
 
 ## Installation
 
